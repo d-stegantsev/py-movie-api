@@ -8,9 +8,7 @@ class MovieAPITests(APITestCase):
 
     def setUp(self):
         self.movie = Movie.objects.create(
-            title="Inception",
-            description="Dream within a dream.",
-            duration=148
+            title="Inception", description="Dream within a dream.", duration=148
         )
         self.movie_url = reverse("cinema:movie_detail", args=[self.movie.id])
         self.list_url = reverse("cinema:movie_list")
@@ -19,7 +17,7 @@ class MovieAPITests(APITestCase):
         data = {
             "title": "Interstellar",
             "description": "Space time travel.",
-            "duration": 169
+            "duration": 169,
         }
         response = self.client.post(self.list_url, data)
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
@@ -40,7 +38,7 @@ class MovieAPITests(APITestCase):
         updated_data = {
             "title": "Inception Updated",
             "description": "Updated description.",
-            "duration": 150
+            "duration": 150,
         }
         response = self.client.put(self.movie_url, updated_data)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
